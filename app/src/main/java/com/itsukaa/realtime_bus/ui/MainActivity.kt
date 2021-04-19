@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.amap.api.maps.MapView
 import com.amap.api.maps.model.MyLocationStyle
 import com.itsukaa.realtime_bus.R
+import com.orhanobut.logger.Logger
 
 class MainActivity : AppCompatActivity() {
     lateinit var mMapView: MapView
@@ -13,6 +14,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        Logger.i("map已生成！")
 
         mMapView = findViewById(R.id.map)
         mMapView.onCreate(savedInstanceState)
@@ -20,7 +22,7 @@ class MainActivity : AppCompatActivity() {
 
         MyLocationStyle().apply {
             interval(2000)
-            myLocationType(MyLocationStyle.LOCATION_TYPE_FOLLOW)
+            myLocationType(MyLocationStyle.LOCATION_TYPE_LOCATION_ROTATE)
             showMyLocation(true)
             anchor(1f, 1f)
             strokeColor(Color.BLUE)
@@ -29,12 +31,13 @@ class MainActivity : AppCompatActivity() {
             aMap.myLocationStyle = this
             aMap.isMyLocationEnabled = true
             aMap.uiSettings.isMyLocationButtonEnabled = true
+            aMap.showIndoorMap(true)
         }
     }
 
     override fun onDestroy() {
         super.onDestroy()
-
+        Logger.i("map已销毁！")
         mMapView.onDestroy()
     }
 
