@@ -1,66 +1,44 @@
 package com.itsukaa.realtime_bus.ui
 
-import android.content.Intent
-import android.graphics.Color
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.amap.api.maps.MapView
-import com.amap.api.maps.model.MyLocationStyle
+import androidx.fragment.app.Fragment
 import com.itsukaa.realtime_bus.R
-import com.orhanobut.logger.Logger
+import com.itsukaa.realtime_bus.ui.fragment.home.HomeFragment
+import com.itsukaa.realtime_bus.ui.fragment.more.MoreFragment
+import com.itsukaa.realtime_bus.ui.fragment.navi.NaviFragment
+import com.itsukaa.realtime_bus.ui.fragment.profile.ProfileFragment
+import nl.joery.animatedbottombar.AnimatedBottomBar
 
 class MainActivity : AppCompatActivity() {
-    lateinit var mMapView: MapView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        Logger.i("map已生成！")
 
-        mMapView = findViewById(R.id.map)
-        mMapView.onCreate(savedInstanceState)
-        val aMap = mMapView.map!!
-        aMap.setOnMapClickListener {
-            startActivity(Intent(this, LaunchActivity::class.java))
+        val bottomBar = findViewById<AnimatedBottomBar>(R.id.bottom_bar)
+
+
+        bottomBar.onTabSelected = {
+            var fragment = Fragment()
+            when (it.title) {
+                "首页" -> {
+                    fragment = HomeFragment()
+                }
+                "导航" -> {
+                    fragment = NaviFragment()
+                }
+                "更多" -> {
+                    fragment = MoreFragment()
+                }
+                "我的" -> {
+                    fragment = ProfileFragment()
+                }
+            }
+            val transaction = supportFragmentManager.beginTransaction()
+            transaction.replace(R.id.main_fragment_view, fragment)
+            transaction.commit()
         }
-
-        MyLocationStyle().apply {
-            interval(2000)
-            myLocationType(MyLocationStyle.LOCATION_TYPE_LOCATION_ROTATE)
-            showMyLocation(true)
-            anchor(1f, 1f)
-            strokeColor(Color.BLUE)
-            strokeColor(Color.GREEN)
-
-            aMap.myLocationStyle = this
-            aMap.isMyLocationEnabled = true
-            aMap.uiSettings.isMyLocationButtonEnabled = true
-            aMap.showIndoorMap(true)
-        }
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        Logger.i("map已销毁！")
-        mMapView.onDestroy()
-    }
-
-    override fun onResume() {
-        super.onResume()
-
-        mMapView.onResume()
-    }
-
-    override fun onPause() {
-        super.onPause()
-
-        mMapView.onPause()
-    }
-
-    override fun onSaveInstanceState(outState: Bundle) {
-        super.onSaveInstanceState(outState)
-
-        mMapView.onSaveInstanceState(outState)
     }
 
 }

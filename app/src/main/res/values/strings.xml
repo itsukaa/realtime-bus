@@ -4,4 +4,10 @@
     <string name="launch_welcome_line2">耐心等待…</string>
     <string name="launch_huanghelou">黄鹤楼</string>
     <string name="launch_choose_city">请选择您的城市</string>
+    <string name="home">首页</string>
+    <string name="navi">导航</string>
+    <string name="more">更多</string>
+    <string name="profile">我的</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
