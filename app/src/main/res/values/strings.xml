@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">realtime-bus</string>
+    <string name="launch_welcome_line1">我们正在帮您定位城市</string>
+    <string name="launch_welcome_line2">耐心等待…</string>
+    <string name="launch_huanghelou">黄鹤楼</string>
+    <string name="launch_choose_city">请选择您的城市</string>
 </resources>

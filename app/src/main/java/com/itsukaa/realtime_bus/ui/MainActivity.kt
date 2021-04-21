@@ -1,5 +1,6 @@
 package com.itsukaa.realtime_bus.ui
 
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -19,6 +20,9 @@ class MainActivity : AppCompatActivity() {
         mMapView = findViewById(R.id.map)
         mMapView.onCreate(savedInstanceState)
         val aMap = mMapView.map!!
+        aMap.setOnMapClickListener {
+            startActivity(Intent(this, LaunchActivity::class.java))
+        }
 
         MyLocationStyle().apply {
             interval(2000)
@@ -58,4 +62,5 @@ class MainActivity : AppCompatActivity() {
 
         mMapView.onSaveInstanceState(outState)
     }
+
 }

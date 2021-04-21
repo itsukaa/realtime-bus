@@ -24,8 +24,8 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
     }
     kotlinOptions {
         jvmTarget = '11'
@@ -55,5 +55,9 @@ dependencies {
     implementation 'com.amap.api:search:7.9.0'
 
     implementation 'com.orhanobut:logger:2.2.0'
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+    implementation 'com.zaaach:citypicker:2.0.3'	//必选
+    //noinspection GradleCompatible
+    implementation 'com.android.support:recyclerview-v7:27.1.1'	//必选
 
 }

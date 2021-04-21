@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.LaunchActivity">
+
+    <RelativeLayout
+        android:id="@+id/launch_welcome_textView_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp">
+
+        <TextView
+            android:id="@+id/launch_welcome_textView_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="@string/launch_welcome_line1" />
+
+        <TextView
+            android:id="@+id/launch_welcome_textView_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/launch_welcome_textView_1"
+            android:layout_centerHorizontal="true"
+            android:text="@string/launch_welcome_line2" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/launch_welcome_imgView_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/launch_welcome_buttonView_layout"
+        android:layout_below="@id/launch_welcome_textView_layout"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="150dp"
+        android:layout_marginBottom="60dp">
+
+        <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/launch_welcome_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:src="@drawable/launch_huanghelou1"
+            app:civ_border_color="#ff4d4d"
+            app:civ_border_width="1dp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/launch_welcome_buttonView_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="100dp">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/launch_choose_city" />
+    </RelativeLayout>
+</RelativeLayout>
