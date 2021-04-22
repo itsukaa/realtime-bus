@@ -69,9 +69,12 @@ dependencies {
 
     implementation 'com.orhanobut:logger:2.2.0'
     implementation 'de.hdodenhof:circleimageview:3.1.0'
-    implementation 'com.zaaach:citypicker:2.0.3'	//必选
+    implementation 'com.zaaach:citypicker:2.0.3'    //必选
     //noinspection GradleCompatible
-    implementation 'com.android.support:recyclerview-v7:27.1.1'	//必选
+    implementation 'com.android.support:recyclerview-v7:27.1.1'    //必选
     implementation 'nl.joery.animatedbottombar:library:1.0.9'
+
+
+    implementation 'com.hjq:titlebar:8.5'
 
 }

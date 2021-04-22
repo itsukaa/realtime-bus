@@ -6,8 +6,8 @@ import androidx.fragment.app.Fragment
 import com.itsukaa.realtime_bus.R
 import com.itsukaa.realtime_bus.ui.fragment.home.HomeFragment
 import com.itsukaa.realtime_bus.ui.fragment.more.MoreFragment
-import com.itsukaa.realtime_bus.ui.fragment.navi.NaviFragment
 import com.itsukaa.realtime_bus.ui.fragment.profile.ProfileFragment
+import com.itsukaa.realtime_bus.ui.fragment.wdiget.ToolBarFragment
 import nl.joery.animatedbottombar.AnimatedBottomBar
 
 class MainActivity : AppCompatActivity() {
@@ -23,10 +23,10 @@ class MainActivity : AppCompatActivity() {
             var fragment = Fragment()
             when (it.title) {
                 "首页" -> {
-                    fragment = HomeFragment()
+                    fragment = HomeFragment.newInstance("123", "213")
                 }
                 "导航" -> {
-                    fragment = NaviFragment()
+                    fragment = ToolBarFragment()
                 }
                 "更多" -> {
                     fragment = MoreFragment()
