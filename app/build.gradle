@@ -76,5 +76,6 @@ dependencies {
 
 
     implementation 'com.hjq:titlebar:8.5'
+    implementation 'codelight.studios:android-smart-login:1.2'
 
 }
