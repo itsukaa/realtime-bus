@@ -5,10 +5,7 @@ plugins {
 }
 idea {
     module {
-        // Javadoc
         downloadJavadoc = true
-
-        // sources
         downloadSources = true
     }
 }
@@ -42,10 +39,6 @@ android {
         jvmTarget = '11'
     }
 
-    packagingOptions {
-        pickFirst 'assets/location_map_gps_3d.png'
-        pickFirst 'assets/location_map_gps_locked.png'
-    }
 }
 
 dependencies {
@@ -61,19 +54,25 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
-
-    implementation 'com.amap.api:map2d:6.0.0'
+    //高德地图
     implementation 'com.amap.api:navi-3dmap:7.9.1_3dmap7.9.1'
     implementation 'com.amap.api:location:5.3.1'
     implementation 'com.amap.api:search:7.9.0'
 
+    //日志
     implementation 'com.orhanobut:logger:2.2.0'
+
+    //圆角图片
     implementation 'de.hdodenhof:circleimageview:3.1.0'
-    implementation 'com.zaaach:citypicker:2.0.3'    //必选
+
+    //城市选择器
+    implementation 'com.zaaach:citypicker:2.0.3'
+
+
+    // 底部BottomBar
     //noinspection GradleCompatible
     implementation 'com.android.support:recyclerview-v7:27.1.1'    //必选
     implementation 'nl.joery.animatedbottombar:library:1.0.9'
 
-    implementation 'com.carson_ho:SearchLayout:1.0.1'
 
 }

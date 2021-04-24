@@ -30,6 +30,7 @@ class CityPickerActivity : AppCompatActivity() {
             .setOnPickListener(object : OnPickListener {
                 override fun onPick(position: Int, data: City) {
                     Toast.makeText(applicationContext, data.name, Toast.LENGTH_SHORT).show()
+                    finish()
                 }
 
                 override fun onCancel() {
