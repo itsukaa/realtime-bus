@@ -1,4 +1,4 @@
-package com.itsukaa.realtime_bus.ui.fragment.profile
+package com.itsukaa.realtime_bus.ui.profile
 
 import android.os.Bundle
 import android.view.LayoutInflater

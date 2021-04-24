@@ -1,4 +1,4 @@
-package com.itsukaa.realtime_bus.ui
+package com.itsukaa.realtime_bus.ui.home
 
 import android.os.Bundle
 import android.widget.Toast
