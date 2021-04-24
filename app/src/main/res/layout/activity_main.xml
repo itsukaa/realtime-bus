@@ -6,15 +6,23 @@
     android:layout_height="match_parent"
     tools:context=".ui.MainActivity">
 
+
     <RelativeLayout
-        android:id="@+id/main_fragment_view"
+        android:id="@+id/bottom_bar_relative_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        android:layout_above="@id/bottom_bar_view"
+        android:layout_alignParentTop="true">
 
 
+        <FrameLayout
+            android:id="@+id/main_fragment_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/bottom_bar_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true">

@@ -6,8 +6,9 @@ import androidx.fragment.app.Fragment
 import com.itsukaa.realtime_bus.R
 import com.itsukaa.realtime_bus.ui.home.HomeFragment
 import com.itsukaa.realtime_bus.ui.more.MoreFragment
+import com.itsukaa.realtime_bus.ui.navi.NaviFragment
 import com.itsukaa.realtime_bus.ui.profile.ProfileFragment
-import com.itsukaa.realtime_bus.ui.wdiget.ToolBarFragment
+import com.orhanobut.logger.Logger
 import nl.joery.animatedbottombar.AnimatedBottomBar
 
 class MainActivity : AppCompatActivity() {
@@ -26,7 +27,8 @@ class MainActivity : AppCompatActivity() {
                     fragment = HomeFragment.newInstance("123", "213")
                 }
                 "导航" -> {
-                    fragment = ToolBarFragment()
+                    fragment = NaviFragment()
+                    Logger.i("刷新了NaviFragment")
                 }
                 "更多" -> {
                     fragment = MoreFragment()
