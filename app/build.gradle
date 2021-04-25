@@ -1,15 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
-    id 'idea'
 }
-idea {
-    module {
-        downloadJavadoc = true
-        downloadSources = true
-    }
-}
-
 
 android {
     compileSdkVersion 30
@@ -17,7 +9,7 @@ android {
 
     defaultConfig {
         applicationId "com.itsukaa.realtime_bus"
-        minSdkVersion 28
+        minSdkVersion 21
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
@@ -32,11 +24,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_11
-        targetCompatibility JavaVersion.VERSION_11
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
     kotlinOptions {
-        jvmTarget = '11'
+        jvmTarget = '1.8'
     }
 
 }
@@ -55,6 +47,7 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
     //高德地图
+    //implementation 'com.amap.api:map2d:6.0.0'
     implementation 'com.amap.api:navi-3dmap:7.9.1_3dmap7.9.1'
     implementation 'com.amap.api:location:5.3.1'
     implementation 'com.amap.api:search:7.9.0'

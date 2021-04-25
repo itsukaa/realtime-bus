@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.itsukaa.realtime_bus.R
 import com.itsukaa.realtime_bus.ui.home.HomeFragment
-import com.itsukaa.realtime_bus.ui.more.MoreFragment
+import com.itsukaa.realtime_bus.ui.home.LaunchActivity
 import com.itsukaa.realtime_bus.ui.navi.NaviActivity
 import com.itsukaa.realtime_bus.ui.profile.ProfileFragment
 import nl.joery.animatedbottombar.AnimatedBottomBar
@@ -27,10 +27,10 @@ class MainActivity : AppCompatActivity() {
                     fragment = HomeFragment.newInstance("123", "213")
                 }
                 "导航" -> {
-                    startActivity(Intent(this, NaviActivity::class.java))
+                    startActivity(Intent(this, LaunchActivity::class.java))
                 }
                 "更多" -> {
-                    fragment = MoreFragment()
+                    startActivity(Intent(this, NaviActivity::class.java))
                 }
                 "我的" -> {
                     fragment = ProfileFragment()
