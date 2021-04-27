@@ -2,6 +2,7 @@ package com.itsukaa.realtime_bus.ui.navi
 
 import android.os.Bundle
 import android.os.PersistableBundle
+import android.widget.SearchView
 import androidx.appcompat.app.AppCompatActivity
 import com.amap.api.maps.MapView
 import com.itsukaa.realtime_bus.R
@@ -17,6 +18,10 @@ class NaviActivity : AppCompatActivity() {
         val aMap = mapView.map
         Logger.i("地图已被创建")
         Logger.i(aMap.toString())
+
+        val searchView = findViewById<SearchView>(R.id.navi_search_view)
+        searchView.setOnClickListener {
+        }
     }
 
     override fun onDestroy() {
@@ -49,4 +54,6 @@ class NaviActivity : AppCompatActivity() {
         mapView.onSaveInstanceState(outState)
         Logger.i("地图状态已被保存")
     }
+
+
 }

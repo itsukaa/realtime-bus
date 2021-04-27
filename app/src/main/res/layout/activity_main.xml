@@ -31,7 +31,7 @@
             android:id="@+id/bottom_bar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#b3ffd9"
+            android:background="@android:color/holo_orange_light"
             app:abb_indicatorAppearance="round"
             app:abb_indicatorHeight="0dp"
             app:abb_selectedIndex="0"

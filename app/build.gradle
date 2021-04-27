@@ -61,11 +61,18 @@ dependencies {
     //城市选择器
     implementation 'com.zaaach:citypicker:2.0.3'
 
-
     // 底部BottomBar
     //noinspection GradleCompatible
     implementation 'com.android.support:recyclerview-v7:27.1.1'    //必选
     implementation 'nl.joery.animatedbottombar:library:1.0.9'
 
+    // 权限申请
+    implementation 'pub.devrel:easypermissions:3.0.0'
+//
+//    //TitleBar
+//    implementation 'com.hjq:titlebar:8.5'
+
+    //搜索框
+//    compile 'com.carson_ho:SearchLayout:1.0.1'
 
 }

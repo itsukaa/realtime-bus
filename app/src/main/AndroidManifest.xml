@@ -19,15 +19,24 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Realtimebus">
+        <activity android:name=".ui.profile.NaviSettingsActivity"></activity>
+        <activity android:name=".ui.profile.UserSettingsActivity" />
+        <activity android:name=".ui.profile.GeneralSettingsActivity" />
+        <activity android:name=".ui.navi.NaviDetailsMapActivity" />
+        <activity android:name=".ui.navi.NaviDetailsActivity" />
+        <activity android:name=".ui.home.BusDetailsMapActivity" />
+        <activity android:name=".ui.home.BusDetailsActivity" />
+        <activity android:name=".ui.home.BusSearcherActivity" />
         <activity android:name=".ui.navi.NaviActivity" />
         <activity android:name=".ui.profile.LoginActivity" />
         <activity
             android:name=".ui.home.CityPickerActivity"
-            android:theme="@style/DefaultCityPickerTheme" />
+            android:theme="@style/DefaultCityPickerTheme"
+            android:windowSoftInputMode="adjustPan" />
+        <activity android:name=".ui.home.LaunchActivity" />
         <activity
-            android:name=".ui.home.LaunchActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity android:name=".ui.MainActivity">
+            android:name=".ui.MainActivity"
+            android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
