@@ -24,7 +24,7 @@ class HomeTopView(context: Context, attrs: AttributeSet) : FrameLayout(context, 
     var searchView: SearchView
 
     init {
-        LayoutInflater.from(context).inflate(R.layout.home_top_view, this)
+        LayoutInflater.from(context).inflate(R.layout.view_home_top, this)
         cityTextView = findViewById(R.id.home_top_view_textView_city)
         moreTextView = findViewById(R.id.home_top_view_textView_more)
         searchView = findViewById(R.id.home_top_view_searchView)

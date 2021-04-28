@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.itsukaa.realtime_bus.R
 import com.itsukaa.realtime_bus.ui.home.HomeFragment
+import com.itsukaa.realtime_bus.ui.more.MoreFragment
 import com.itsukaa.realtime_bus.ui.navi.NaviActivity
 import com.itsukaa.realtime_bus.ui.profile.ProfileFragment
 import com.orhanobut.logger.Logger
@@ -31,6 +32,7 @@ class MainActivity : AppCompatActivity(), EasyPermissions.PermissionCallbacks {
                     startActivity(Intent(this, NaviActivity::class.java))
                 }
                 "更多" -> {
+                    fragment = MoreFragment()
                 }
                 "我的" -> {
                     fragment = ProfileFragment()

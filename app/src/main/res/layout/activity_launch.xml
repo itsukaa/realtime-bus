@@ -43,7 +43,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:src="@drawable/launch_huanghelou1"
+            android:src="@drawable/home_launch_huanghelou1"
             app:civ_border_color="#ff4d4d"
             app:civ_border_width="1dp" />
     </RelativeLayout>
