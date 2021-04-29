@@ -4,9 +4,9 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.itsukaa.realtime_bus.R
 
-class BusSearcherActivity : AppCompatActivity() {
+class LineDetailsMapActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_search_bus)
+        setContentView(R.layout.activity_bus_details_map)
     }
 }

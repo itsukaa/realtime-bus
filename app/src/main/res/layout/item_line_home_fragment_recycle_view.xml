@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/item_station_home_fragment_recycle_view_basicInfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/item_station_home_fragment_recycle_view_basicInfo_stationName_textView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_toStartOf="@id/item_line_duibishang"
+            android:text="804路" />
+
+        <View
+            android:id="@+id/item_line_duibishang"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_centerHorizontal="true" />
+
+        <TextView
+            android:id="@+id/item_line_home_fragment_recycle_view_basicInfo_stationTime_textView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_toEndOf="@+id/item_line_duibishang"
+            android:text="1分钟" />
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/item_station_home_fragment_recycle_view_onChangeInfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/item_station_home_fragment_recycle_view_basicInfo">
+
+        <TextView
+            android:id="@+id/item_line_home_fragment_recycle_view_basicInfo_stationDirection_textView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_toStartOf="@+id/item_line_duibixia"
+            android:text="开往 xxx 方向" />
+
+        <View
+            android:id="@+id/item_line_duibixia"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_centerHorizontal="true" />
+
+        <TextView
+            android:id="@+id/item_line_home_fragment_recycle_view_basicInfo_stationCount_textView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_toEndOf="@id/item_line_duibixia"
+            android:text="6站/300m" />
+    </RelativeLayout>
+
+</RelativeLayout>

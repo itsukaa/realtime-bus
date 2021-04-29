@@ -36,7 +36,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="#C8C8C8"
-                android:overScrollMode="never" />
+                android:overScrollMode="never"></androidx.recyclerview.widget.RecyclerView>
 
             <com.scwang.smart.refresh.footer.ClassicsFooter
                 android:layout_width="match_parent"

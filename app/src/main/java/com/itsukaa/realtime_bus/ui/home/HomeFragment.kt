@@ -44,16 +44,20 @@ class HomeFragment : Fragment() {
         val line901 = Line("901", "光谷一路")
         val line902 = Line("902", "余家头")
         val line903 = Line("903", "铁机路")
+        val line996 = Line("996", "香港路")
 
-        val lines1 = listOf<Line>(line804, line805, line806)
+        val lines1 = listOf<Line>(line804, line805, line806, line996)
         val lines2 = listOf<Line>(line901, line902, line903)
+        val lines3 = listOf<Line>(line805, line902, line903, line996)
 
 
         val station1 = Station("文秀街", 3, lines1)
         val station2 = Station("雄楚大道BRT书城路站", 3, lines2)
+        val station3 = Station("文治街", 2, lines3)
+        val station4 = Station("雄楚大道BRT出版城", 2, lines3)
+        val station5 = Station("香港路", 4, lines1)
 
-        stations = listOf(station1, station2)
-
+        stations = listOf(station1, station2, station3, station5, station4)
 
     }
 

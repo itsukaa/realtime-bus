@@ -32,23 +32,142 @@
 
 -->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_margin="10dp"
     tools:context=".ui.profile.ProfileFragment">
 
-    <!-- TODO: Update blank fragment layout -->
+
     <RelativeLayout
-        android:layout_width="wrap_content"
+        android:id="@+id/fragment_profile_userBasicInfo"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true">
+        android:layout_alignParentTop="true">
+
+        <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/userInfo_touxiang"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@drawable/huolieniao"
+            app:civ_border_color="#ff4d4d"
+            app:civ_border_width="1dp" />
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="I am Profile" />
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginStart="20dp"
+            android:layout_toEndOf="@+id/userInfo_touxiang"
+            android:gravity="center_vertical"
+            android:text="活泼的火烈鸟"
+            android:textAlignment="center"
+            android:textColor="@android:color/holo_red_light"
+            android:textSize="20sp" />
+
     </RelativeLayout>
 
+    <RelativeLayout
+        android:id="@+id/fragment_profile_userOtherInfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/fragment_profile_userBasicInfo">
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/fragment_profile_adInfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/fragment_profile_userOtherInfo">
+
+        <TextView
+            android:id="@+id/vip"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:drawablePadding="10dp"
+            android:gravity="center_vertical"
+            android:padding="10dp"
+            android:text="VIP会员"
+            app:drawableStartCompat="@drawable/profile_vip" />
+
+        <TextView
+            android:id="@+id/job"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_below="@+id/vip"
+            android:drawablePadding="10dp"
+            android:gravity="center_vertical"
+            android:padding="10dp"
+            android:text="任务悬赏"
+            app:drawableStartCompat="@drawable/profile_job" />
+
+
+        <TextView
+            android:id="@+id/card"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_below="@+id/job"
+            android:drawablePadding="10dp"
+            android:gravity="center_vertical"
+            android:padding="10dp"
+            android:text="我的卡包"
+            app:drawableStartCompat="@drawable/profile_card" />
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/fragment_profile_otherSettings"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/fragment_profile_adInfo">
+
+        <TextView
+            android:id="@+id/generalsttings"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:drawablePadding="10dp"
+            android:gravity="center_vertical"
+            android:padding="10dp"
+            android:text="通用设置"
+            app:drawableStartCompat="@drawable/profile_settings" />
+
+        <TextView
+            android:id="@+id/locations"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_below="@+id/generalsttings"
+            android:drawablePadding="10dp"
+            android:gravity="center_vertical"
+            android:padding="10dp"
+            android:text="常用地点"
+            app:drawableStartCompat="@drawable/profile_location" />
+
+
+        <TextView
+            android:id="@+id/help"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_below="@+id/locations"
+            android:drawablePadding="10dp"
+            android:gravity="center_vertical"
+            android:padding="10dp"
+            android:text="帮助与反馈"
+            app:drawableStartCompat="@drawable/profile_help" />
+
+        <TextView
+            android:id="@+id/funcs"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_below="@id/help"
+            android:drawablePadding="10dp"
+            android:gravity="center_vertical"
+            android:padding="10dp"
+            android:text="功能介绍"
+            app:drawableStartCompat="@drawable/profile_funcs" />
+
+    </RelativeLayout>
 </RelativeLayout>

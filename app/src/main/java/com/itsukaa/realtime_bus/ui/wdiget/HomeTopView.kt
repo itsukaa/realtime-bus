@@ -9,8 +9,8 @@ import android.widget.FrameLayout
 import android.widget.SearchView
 import android.widget.TextView
 import com.itsukaa.realtime_bus.R
-import com.itsukaa.realtime_bus.ui.home.BusSearcherActivity
 import com.itsukaa.realtime_bus.ui.home.CityPickerActivity
+import com.itsukaa.realtime_bus.ui.home.LineSearcherActivity
 import com.orhanobut.logger.Logger
 
 /**
@@ -43,7 +43,7 @@ class HomeTopView(context: Context, attrs: AttributeSet) : FrameLayout(context, 
         when (v.id) {
             R.id.home_top_view_searchView -> {
                 Logger.w("搜索框被点击了！")
-                v.context.startActivity(Intent(v.context, BusSearcherActivity::class.java))
+                v.context.startActivity(Intent(v.context, LineSearcherActivity::class.java))
             }
             R.id.home_top_view_textView_city -> {
                 Logger.w("城市被点击了！")

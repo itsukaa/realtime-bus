@@ -23,7 +23,6 @@ class MoreFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         webView = view.findViewById(R.id.fragment_more_webView)
-
-        webView.loadUrl("https://m.bilibili.com/")
+        webView.loadUrl("https://voice.baidu.com/act/newpneumonia/newpneumonia/?from=osari_aladin_top1#tab4\n")
     }
 }
