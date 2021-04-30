@@ -73,7 +73,7 @@ dependencies {
 //    implementation 'com.hjq:titlebar:8.5'
 
     //搜索框
-//    compile 'com.carson_ho:SearchLayout:1.0.1'
+    compile 'com.carson_ho:SearchLayout:1.0.1'
 
     //下拉刷新，上拉加载
     implementation  'com.scwang.smart:refresh-layout-kernel:2.0.3'      //核心必须依赖

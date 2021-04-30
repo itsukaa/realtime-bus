@@ -39,8 +39,11 @@ class StationsAdapter(var stations: List<Station>) :
         val linearLayoutManager = LinearLayoutManager(context)
         linearLayoutManager.orientation = LinearLayoutManager.VERTICAL
         holder.recyclerView.layoutManager = linearLayoutManager
-        holder.recyclerView.adapter =
+        val linesAdapter =
             station.lines?.let { LinesAdapter(it, R.layout.item_line_home_fragment_recycle_view) }
+        holder.recyclerView.adapter = linesAdapter
+
+
     }
 
     override fun getItemCount(): Int {
