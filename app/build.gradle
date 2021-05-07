@@ -80,4 +80,11 @@ dependencies {
     implementation  'com.scwang.smart:refresh-header-classics:2.0.3'    //经典刷新头
     implementation  'com.scwang.smart:refresh-footer-classics:2.0.3'    //经典加载
 
+    //okhttp
+    implementation 'com.squareup.okhttp3:okhttp:3.5.0'
+
+
+    //json解析
+//    implementation 'com.github.salomonbrys.kotson:kotson:2.5.0'
+    implementation "com.google.code.gson:gson:2.8.6"
 }

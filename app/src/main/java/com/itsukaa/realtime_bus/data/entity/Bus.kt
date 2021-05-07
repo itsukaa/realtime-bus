@@ -1,6 +1,5 @@
 package com.itsukaa.realtime_bus.data.entity
 
-import android.location.Location
 
 class Bus {
     /**
@@ -27,4 +26,8 @@ class Bus {
      * 什么？
      */
     val busFlag: String? = null
+    override fun toString(): String {
+        return "Bus(busId=$busId, busFromStartStationNum=$busFromStartStationNum, busIsArrived=$busIsArrived, location=$location, busFlag=$busFlag)"
+    }
+
 }

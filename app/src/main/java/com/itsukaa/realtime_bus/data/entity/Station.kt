@@ -19,5 +19,10 @@ class Station {
     /**
      * 站台线路
      */
-    val stationLines: List<Line>? = null
+    var stationLines: List<Line>? = null
+    override fun toString(): String {
+        return "Station(stationLocation=$stationLocation, stationId=$stationId, stationName=$stationName, stationLines=$stationLines)"
+    }
+
+
 }

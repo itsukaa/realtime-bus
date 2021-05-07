@@ -6,85 +6,16 @@
     tools:context=".ui.home.LineDetailsActivity">
 
     <RelativeLayout
-        android:id="@+id/busBasicInfo"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-
-        <TextView
-            android:id="@+id/lineName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:gravity="center"
-            android:text="xxx 路" />
-
-        <TextView
-            android:id="@+id/lineStartTOEnd"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/lineName"
-            android:layout_toStartOf="@+id/reverseDirection"
-            android:text="xxx -> xxx" />
-
-        <TextView
-            android:id="@+id/reverseDirection"
-            android:layout_width="50dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/lineName"
-            android:layout_alignParentEnd="true"
-            android:text="换向" />
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:id="@+id/buses"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/busBasicInfo">
-
-        <TextView
-            android:id="@+id/bus0Time"
-            android:layout_width="120dp"
-            android:layout_height="60dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:text="xx 分钟" />
-
-        <TextView
-            android:id="@+id/bus0StationNumAndDistance"
-            android:layout_width="120dp"
-            android:layout_height="30dp"
-            android:layout_below="@+id/bus0Time"
-            android:layout_alignParentStart="true"
-            android:text="x站/xxm" />
-
-
-        <TextView
-            android:id="@+id/bus1Time"
-            android:layout_width="120dp"
-            android:layout_height="60dp"
-            android:layout_alignParentTop="true"
-            android:layout_toEndOf="@+id/bus0Time"
-            android:text="xx 分钟" />
-
-        <TextView
-            android:id="@+id/bus1StationNumAndDistance"
-            android:layout_width="120dp"
-            android:layout_height="30dp"
-            android:layout_below="@+id/bus1Time"
-            android:layout_toEndOf="@+id/bus0StationNumAndDistance"
-            android:text="x站/xxm" />
-
-    </RelativeLayout>
-
-    <RelativeLayout
         android:id="@+id/lineStations"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/buses">
+        android:layout_height="400dp">
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/stopsView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:overScrollMode="never" />
     </RelativeLayout>
-
 
     <RelativeLayout
         android:id="@+id/busDetailsMapLayout"
@@ -97,6 +28,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
+            android:layout_centerInParent="true"
             android:text="我的行程" />
 
         <com.amap.api.maps.MapView

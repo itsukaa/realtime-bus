@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/busPic"
+        android:layout_width="40dp"
+        android:layout_height="20dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="50dp"
+        android:text="车" />
+
+    <TextView
+        android:id="@+id/realLine"
+        android:layout_width="40dp"
+        android:layout_height="20dp"
+        android:layout_below="@+id/busPic"
+        android:text="_____" />
+
+    <TextView
+        android:id="@+id/stopName"
+        android:layout_width="wrap_content"
+        android:layout_height="250dp"
+        android:layout_below="@id/realLine"
+        android:ems="1"
+        android:text="水洞路余家头站" />
+
+</RelativeLayout>

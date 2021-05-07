@@ -17,7 +17,10 @@ import com.amap.api.services.poisearch.PoiResult
 import com.amap.api.services.poisearch.PoiSearch
 import com.itsukaa.realtime_bus.R
 import com.itsukaa.realtime_bus.data.adapter.StationsAdapter
+import com.itsukaa.realtime_bus.data.entity.Location
 import com.itsukaa.realtime_bus.data.entity.Station
+import com.itsukaa.realtime_bus.server.data.getStationsByLocation
+import com.itsukaa.realtime_bus.utils.beautifyStations
 import com.orhanobut.logger.Logger
 
 
@@ -28,24 +31,34 @@ import com.orhanobut.logger.Logger
  */
 class HomeFragment : Fragment() {
 
-    lateinit var stations: List<Station>
-
+    lateinit var stations: MutableList<Station>
+    lateinit var adapter: StationsAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_home, container, false)
-
         initData()
         val mRecyclerView = view.findViewById<RecyclerView>(R.id.fragment_home_recyclerView)
         mRecyclerView.layoutManager = LinearLayoutManager(activity)
         mRecyclerView.adapter = StationsAdapter(stations)
+        adapter = mRecyclerView.adapter as StationsAdapter
         return view
     }
 
     private fun initData() {
-
+        stations = emptyList<Station>().toMutableList()
+        Thread {
+            var stationsByLocation =
+                getStationsByLocation(Location("114.316107", "30.530555", "武汉"))
+            stationsByLocation = beautifyStations(stationsByLocation as MutableList)
+            stations.addAll(stationsByLocation)
+            activity?.runOnUiThread {
+                adapter.notifyDataSetChanged()
+            }
+            Logger.i(stations.toString())
+        }.start()
     }
 
 

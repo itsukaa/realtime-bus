@@ -31,8 +31,8 @@ class StationsAdapter(var stations: List<Station>) :
     override fun onBindViewHolder(holder: StationsViewHolder, position: Int) {
         val station: Station = stations[position]
 
-        holder.stopNameTextView.text = station.stationName
-        holder.stopNumTextView.text = "${station.stationName}个站台"
+        holder.stopNameTextView.text = "${station.stationName}"
+        holder.stopNumTextView.text = "${station.stationLines?.size} 条线路\n(只显示有车线路)"
 
 
         //子RecycleView
@@ -68,5 +68,6 @@ class StationsAdapter(var stations: List<Station>) :
                 view.findViewById(R.id.item_station_home_fragment_recycle_view_stopNum)
             recyclerView = view.findViewById(R.id.item_bus_recycleView)
         }
+
     }
 }

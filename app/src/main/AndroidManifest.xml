@@ -16,10 +16,11 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:usesCleartextTraffic="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Realtimebus">
-        <activity android:name=".ui.profile.NaviSettingsActivity"></activity>
+        <activity android:name=".ui.profile.NaviSettingsActivity" />
         <activity android:name=".ui.profile.UserSettingsActivity" />
         <activity android:name=".ui.profile.GeneralSettingsActivity" />
         <activity android:name=".ui.navi.NaviDetailsMapActivity" />
