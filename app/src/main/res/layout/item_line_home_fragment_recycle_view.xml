@@ -4,57 +4,82 @@
     android:layout_height="match_parent">
 
     <RelativeLayout
-        android:id="@+id/item_station_home_fragment_recycle_view_basicInfo"
+        android:id="@+id/item_line_name_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/item_station_home_fragment_recycle_view_basicInfo_stationName_textView"
+            android:id="@+id/item_line_name"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_toStartOf="@id/item_line_duibishang"
+            android:layout_toStartOf="@id/item_line_middle"
             android:text="804路" />
 
         <View
-            android:id="@+id/item_line_duibishang"
+            android:id="@+id/item_line_middle"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_centerHorizontal="true" />
 
         <TextView
-            android:id="@+id/item_line_home_fragment_recycle_view_basicInfo_stationTime_textView"
+            android:id="@+id/item_line_tmp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_toEndOf="@+id/item_line_duibishang"
-            android:text="1分钟" />
+            android:layout_toEndOf="@+id/item_line_middle" />
     </RelativeLayout>
 
 
     <RelativeLayout
-        android:id="@+id/item_station_home_fragment_recycle_view_onChangeInfo"
+        android:id="@+id/item_line_0_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/item_station_home_fragment_recycle_view_basicInfo">
+        android:layout_below="@id/item_line_name_layout">
 
         <TextView
-            android:id="@+id/item_line_home_fragment_recycle_view_basicInfo_stationDirection_textView"
+            android:id="@+id/item_line_direction"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_toStartOf="@+id/item_line_duibixia"
+            android:layout_toStartOf="@+id/item_line_middle1"
             android:text="开往 xxx 方向" />
 
         <View
-            android:id="@+id/item_line_duibixia"
+            android:id="@+id/item_line_middle1"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_centerHorizontal="true" />
 
         <TextView
-            android:id="@+id/item_line_home_fragment_recycle_view_basicInfo_stationCount_textView"
+            android:id="@+id/item_line_stationNum_time"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_toEndOf="@id/item_line_duibixia"
-            android:text="6站/300m" />
+            android:layout_toEndOf="@id/item_line_middle1"
+            android:text="3站 / 2分钟" />
     </RelativeLayout>
 
+    <RelativeLayout
+        android:id="@+id/item_line_1_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/item_line_0_layout">
+
+        <TextView
+            android:id="@+id/item_line_reversed_direction"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_toStartOf="@+id/item_line_middle2"
+            android:text="开往 xxx 方向" />
+
+        <View
+            android:id="@+id/item_line_middle2"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_centerHorizontal="true" />
+
+        <TextView
+            android:id="@+id/item_line_reversed_stationNum_time"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_toEndOf="@id/item_line_middle2"
+            android:text="6站 / 13分钟" />
+    </RelativeLayout>
 </RelativeLayout>

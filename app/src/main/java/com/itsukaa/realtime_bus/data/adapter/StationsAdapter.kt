@@ -32,7 +32,7 @@ class StationsAdapter(var stations: List<Station>) :
         val station: Station = stations[position]
 
         holder.stopNameTextView.text = station.stationName
-        holder.stopNumTextView.text = "${station.stationNum}个站台"
+        holder.stopNumTextView.text = "${station.stationName}个站台"
 
 
         //子RecycleView
@@ -40,7 +40,13 @@ class StationsAdapter(var stations: List<Station>) :
         linearLayoutManager.orientation = LinearLayoutManager.VERTICAL
         holder.recyclerView.layoutManager = linearLayoutManager
         val linesAdapter =
-            station.lines?.let { LinesAdapter(it, R.layout.item_line_home_fragment_recycle_view) }
+            station.stationLines?.let {
+                LinesAdapter(
+                    it,
+                    R.layout.item_line_home_fragment_recycle_view,
+                    station
+                )
+            }
         holder.recyclerView.adapter = linesAdapter
 
 

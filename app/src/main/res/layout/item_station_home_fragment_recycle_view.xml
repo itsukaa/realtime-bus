@@ -17,7 +17,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:gravity="center"
-            app:drawableStartCompat="@drawable/view_home_top_bus"
+            app:drawableStartCompat="@drawable/gongjiaoche"
             tools:text="烦烦烦" />
 
         <TextView
@@ -27,7 +27,7 @@
             android:layout_marginStart="10dp"
             android:layout_toEndOf="@id/item_bus_home_fragment_recycle_view_stopName"
             android:gravity="center"
-            tools:text="2个站台" />
+            tools:text="2 条线路" />
 
     </RelativeLayout>
 

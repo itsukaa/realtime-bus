@@ -17,7 +17,6 @@ import com.amap.api.services.poisearch.PoiResult
 import com.amap.api.services.poisearch.PoiSearch
 import com.itsukaa.realtime_bus.R
 import com.itsukaa.realtime_bus.data.adapter.StationsAdapter
-import com.itsukaa.realtime_bus.data.entity.Line
 import com.itsukaa.realtime_bus.data.entity.Station
 import com.orhanobut.logger.Logger
 
@@ -45,31 +44,15 @@ class HomeFragment : Fragment() {
         return view
     }
 
+    private fun initData() {
 
-    fun initData() {
-
-
-        val line804 = Line("804", "南湖路江南村")
-        val line805 = Line("805", "和平大道杨园")
-        val line806 = Line("806", "彭刘杨路")
-        val line901 = Line("901", "光谷一路")
-        val line902 = Line("902", "余家头")
-        val line903 = Line("903", "铁机路")
-        val line996 = Line("996", "香港路")
-
-        val lines1 = listOf<Line>(line804, line805, line806, line996)
-        val lines2 = listOf<Line>(line901, line902, line903)
-        val lines3 = listOf<Line>(line805, line902, line903, line996)
+    }
 
 
-        val station1 = Station("文秀街", 3, lines1)
-        val station2 = Station("雄楚大道BRT书城路站", 3, lines2)
-        val station3 = Station("文治街", 2, lines3)
-        val station4 = Station("雄楚大道BRT出版城", 2, lines3)
-        val station5 = Station("香港路", 4, lines1)
-
-        stations = listOf(station1, station2, station3, station5, station4)
-
+    /**
+     * 获取公交信息
+     */
+    fun getgongjiaoinfo() {
         //"150700"
         val query = PoiSearch.Query("", "150700", "武汉")
         query.pageSize = 10
