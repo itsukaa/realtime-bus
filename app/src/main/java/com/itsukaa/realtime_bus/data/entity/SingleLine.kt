@@ -30,13 +30,20 @@ class SingleLine {
             stopNum = bus.busFromStartStationNum
         }
 
-        return stationIndex - stopNum + 1
+        return stationIndex - stopNum
     }
 
 
     fun leftTime(stationId: String): String {
         val stopNum = stopNum(stationId)
 
+
+        val time = (stopNum * 2).toString()
+        return time + "分钟"
+    }
+
+    fun getNumAndCount(stationId: String): String {
+        val stopNum = stopNum(stationId)
         if (stopNum == 0) {
             if (singleLineBuses?.get(stopNum)?.busIsArrived == true) {
                 return "已到站"
@@ -44,8 +51,8 @@ class SingleLine {
             return "即将到站"
         }
 
-        val time = (stopNum * 2).toString()
-        return time + "分钟"
+        return "${stopNum}站/${leftTime(stationId)}"
+
     }
 
     override fun toString(): String {

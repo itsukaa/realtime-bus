@@ -6,38 +6,36 @@
     tools:context=".ui.home.LineDetailsActivity">
 
     <RelativeLayout
-        android:id="@+id/lineStations"
         android:layout_width="match_parent"
-        android:layout_height="400dp">
+        android:layout_height="wrap_content">
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/lineStations"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_above="@+id/busDetailsMapLayout">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/stopsView"
+            android:layout_height="wrap_content"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
             android:overScrollMode="never" />
     </RelativeLayout>
 
     <RelativeLayout
         android:id="@+id/busDetailsMapLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/lineStations">
-
-        <TextView
-            android:id="@+id/mapLabel"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_centerInParent="true"
-            android:text="我的行程" />
+        android:layout_height="200dp"
+        android:layout_alignParentBottom="true">
 
         <com.amap.api.maps.MapView
             android:id="@+id/busDetailsMap"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:layout_below="@+id/mapLabel"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp" />
+            android:layout_height="match_parent"
+            android:layout_margin="10dp" />
     </RelativeLayout>
 
 </RelativeLayout>

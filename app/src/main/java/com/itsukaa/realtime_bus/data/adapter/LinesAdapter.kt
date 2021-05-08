@@ -74,19 +74,19 @@ class LinesAdapter(var lines: List<Line>, val layoutId: Int, val station: Statio
 
 
         val stopNum = singleLine?.stopNum(station.stationId.toString())
-        val leftTime = singleLine?.leftTime(station.stationId.toString())
         val rStopNum = returnSingleLine?.stopNum(station.stationId.toString())
-        val rLeftTime = singleLine?.leftTime(station.stationId.toString())
 
         if (stopNum == -1) {
             holder.lineStationCountTime.text = "已无车"
         } else {
-            holder.lineStationCountTime.text = "${stopNum}站/${leftTime}"
+            holder.lineStationCountTime.text =
+                "${singleLine?.getNumAndCount(station.stationId.toString())}"
         }
         if (rStopNum == -1) {
             holder.rLineStationCountTime.text = "已无车"
         } else {
-            holder.rLineStationCountTime.text = "${rStopNum}站/${rLeftTime}"
+            holder.rLineStationCountTime.text =
+                "${returnSingleLine?.getNumAndCount(station.stationId.toString())}"
         }
 
         if (stopNum == -1 && rStopNum == -1) {
