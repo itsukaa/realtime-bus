@@ -6,6 +6,7 @@ import com.itsukaa.realtime_bus.data.entity.Location
 import com.itsukaa.realtime_bus.data.entity.Station
 import com.itsukaa.realtime_bus.server.data.getStationsByLocation
 import com.itsukaa.realtime_bus.utils.beautifyStations
+import com.orhanobut.logger.Logger
 
 fun homeTask(
     activity: Activity,
@@ -16,12 +17,14 @@ fun homeTask(
     //Location("114.316107", "30.530555", "武汉")
     Thread {
         var stationsByLocation = getStationsByLocation(location)
-
-        stationsByLocation = beautifyStations(stationsByLocation as MutableList)
-
-        stations.addAll(stationsByLocation)
-        activity.runOnUiThread {
-            adapter.notifyDataSetChanged()
+        if (stationsByLocation.isNotEmpty()) {
+            stationsByLocation = beautifyStations(stationsByLocation as MutableList)
+            stations.clear()
+            stations.addAll(stationsByLocation)
+            activity.runOnUiThread {
+                adapter.notifyDataSetChanged()
+                Logger.i("通知Ui线程刷新列表")
+            }
         }
     }.start()
 }

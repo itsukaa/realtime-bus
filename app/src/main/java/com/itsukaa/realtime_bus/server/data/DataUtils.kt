@@ -7,17 +7,22 @@ import com.itsukaa.realtime_bus.data.entity.Location
 import com.itsukaa.realtime_bus.data.entity.Station
 import com.itsukaa.realtime_bus.data.entity.dto.ResStationsDto
 import com.itsukaa.realtime_bus.server.net.NetClient
+import com.orhanobut.logger.Logger
 
 fun getStationsByLocation(location: Location): List<Station> {
-    val path = "/stations/nearBy"
-    val body = location.toString()
-    val res = NetClient.call(path, body).execute().body().string()
+    return try {
+        val path = "/stations/nearBy"
+        val body = location.toString()
+        val res = NetClient.call(path, body).execute().body().string()
 
-    val gson = Gson()
-    val fromJson = gson.fromJson(res, ResStationsDto::class.java)
+        val gson = Gson()
+        val fromJson = gson.fromJson(res, ResStationsDto::class.java)
 
-//    Logger.w(fromJson.toString())
-    return fromJson.res as List<Station>
+        Logger.w("得到数据")
+        fromJson.res as List<Station>
+    } catch (exception: Exception) {
+        emptyList()
+    }
 }
 
 

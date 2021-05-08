@@ -15,12 +15,18 @@ import com.amap.api.services.core.LatLonPoint
 import com.amap.api.services.core.PoiItem
 import com.amap.api.services.poisearch.PoiResult
 import com.amap.api.services.poisearch.PoiSearch
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.itsukaa.realtime_bus.R
 import com.itsukaa.realtime_bus.data.adapter.StationsAdapter
 import com.itsukaa.realtime_bus.data.entity.Location
 import com.itsukaa.realtime_bus.data.entity.Station
 import com.itsukaa.realtime_bus.server.task.homeTask
 import com.orhanobut.logger.Logger
+import com.scwang.smart.refresh.footer.ClassicsFooter
+import com.scwang.smart.refresh.header.ClassicsHeader
+import com.scwang.smart.refresh.layout.api.RefreshLayout
+import java.util.*
+import kotlin.collections.ArrayList
 
 
 /**
@@ -33,20 +39,58 @@ class HomeFragment : Fragment() {
     var stations: MutableList<Station> = mutableListOf()
     lateinit var adapter: StationsAdapter
 
+    lateinit var floatingActionButton: FloatingActionButton
+    lateinit var refreshLayout: RefreshLayout
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_home, container, false)
         val mRecyclerView = view.findViewById<RecyclerView>(R.id.fragment_home_recyclerView)
+
+        floatingActionButton = view.findViewById(R.id.fab)
+        refreshLayout = view.findViewById(R.id.refreshLayout)
+        refreshLayout.setRefreshHeader(ClassicsHeader(context))
+        refreshLayout.setRefreshFooter(ClassicsFooter(context))
+
+
         mRecyclerView.layoutManager = LinearLayoutManager(activity)
         mRecyclerView.adapter = StationsAdapter(stations)
         adapter = mRecyclerView.adapter as StationsAdapter
-        initData()
+        refreshData()
+        addEventListener()
+        addTimerTask()
         return view
     }
 
-    private fun initData() {
+    private fun addTimerTask() {
+        val timer = Timer()
+        val timerTask: TimerTask = object : TimerTask() {
+            override fun run() {
+                refreshData()
+            }
+        }
+        timer.schedule(timerTask, 0, 5000) //立刻执行，间隔1秒循环执行
+    }
+
+    private fun addEventListener() {
+        floatingActionButton.setOnClickListener {
+            refreshData()
+        }
+
+        refreshLayout.setOnRefreshListener {
+            Logger.i("刷新")
+            refreshData()
+            it.finishRefresh()
+        }
+
+        refreshLayout.setEnableLoadMore(false)
+
+    }
+
+    private fun refreshData() {
+        Logger.i("刷新数据")
         homeTask(activity!!, adapter, stations, Location("114.316107", "30.530555", "武汉"))
     }
 
@@ -62,7 +106,7 @@ class HomeFragment : Fragment() {
         query.cityLimit = true
 
         val poiSearch = PoiSearch(context, query)
-        var busStations = ArrayList<String>()
+        val busStations = ArrayList<String>()
 
         poiSearch.setOnPoiSearchListener(object : PoiSearch.OnPoiSearchListener {
             override fun onPoiSearched(result: PoiResult?, rCode: Int) {
