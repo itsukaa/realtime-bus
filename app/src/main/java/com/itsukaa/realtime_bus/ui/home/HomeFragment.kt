@@ -1,9 +1,12 @@
 package com.itsukaa.realtime_bus.ui.home
 
+import android.annotation.SuppressLint
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -29,6 +32,7 @@ import java.util.*
 import kotlin.collections.ArrayList
 
 
+@SuppressLint("SetTextI18n")
 /**
  * A simple [Fragment] subclass.
  * Use the [HomeFragment.newInstance] factory method to
@@ -41,6 +45,18 @@ class HomeFragment : Fragment() {
 
     lateinit var floatingActionButton: FloatingActionButton
     lateinit var refreshLayout: RefreshLayout
+
+    val countDownTimer = object : CountDownTimer(30 * 1000, 1000) {
+        override fun onFinish() {
+            activity!!.findViewById<TextView>(R.id.home_top_view_textView_more).text = "0"
+        }
+
+        override fun onTick(millisUntilFinished: Long) {
+            activity!!.findViewById<TextView>(R.id.home_top_view_textView_more).text =
+                "${millisUntilFinished / 1000}s"
+        }
+    }
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -58,6 +74,7 @@ class HomeFragment : Fragment() {
         mRecyclerView.layoutManager = LinearLayoutManager(activity)
         mRecyclerView.adapter = StationsAdapter(stations)
         adapter = mRecyclerView.adapter as StationsAdapter
+        countDownTimer.start()
         refreshData()
         addEventListener()
         addTimerTask()
@@ -71,7 +88,7 @@ class HomeFragment : Fragment() {
                 refreshData()
             }
         }
-        timer.schedule(timerTask, 0, 5000) //立刻执行，间隔1秒循环执行
+        timer.schedule(timerTask, 0, 30000) //立刻执行，间隔1秒循环执行
     }
 
     private fun addEventListener() {
@@ -90,8 +107,9 @@ class HomeFragment : Fragment() {
     }
 
     private fun refreshData() {
-        Logger.i("刷新数据")
         homeTask(activity!!, adapter, stations, Location("114.316107", "30.530555", "武汉"))
+        countDownTimer.cancel()
+        countDownTimer.start()
     }
 
 

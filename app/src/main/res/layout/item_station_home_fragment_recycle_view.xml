@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="50dp"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:ignore="RtlHardcoded">
 
     <RelativeLayout
         android:id="@+id/item_bus_home_fragment_recycle_view_stop_layout"
@@ -24,9 +25,10 @@
             android:id="@+id/item_station_home_fragment_recycle_view_stopNum"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_marginStart="10dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="10dp"
             android:layout_toEndOf="@id/item_bus_home_fragment_recycle_view_stopName"
-            android:gravity="center"
+            android:gravity="right|center_vertical"
             tools:text="2 条线路" />
 
     </RelativeLayout>

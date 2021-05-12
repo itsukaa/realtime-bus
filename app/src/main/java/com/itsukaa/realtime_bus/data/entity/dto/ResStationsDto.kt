@@ -6,4 +6,9 @@ class ResStationsDto {
     val code: Int = 200
     val msg: String = "ok"
     val res: List<Station>? = null
+    override fun toString(): String {
+        return "ResStationsDto(msg='$msg')"
+    }
+
+
 }

@@ -18,9 +18,10 @@ fun getStationsByLocation(location: Location): List<Station> {
         val gson = Gson()
         val fromJson = gson.fromJson(res, ResStationsDto::class.java)
 
-        Logger.w("得到数据")
+        Logger.w("得到数据为${fromJson}")
         fromJson.res as List<Station>
     } catch (exception: Exception) {
+        Logger.e("数据出错")
         emptyList()
     }
 }

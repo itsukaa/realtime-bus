@@ -19,7 +19,7 @@ class Station {
     /**
      * 站台线路
      */
-    var stationLines: List<Line>? = null
+    var stationLines: MutableList<Line>? = null
     override fun toString(): String {
         return "Station(stationLocation=$stationLocation, stationId=$stationId, stationName=$stationName, stationLines=$stationLines)"
     }

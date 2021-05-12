@@ -6,7 +6,6 @@ import com.itsukaa.realtime_bus.data.entity.Location
 import com.itsukaa.realtime_bus.data.entity.Station
 import com.itsukaa.realtime_bus.server.data.getStationsByLocation
 import com.itsukaa.realtime_bus.utils.beautifyStations
-import com.orhanobut.logger.Logger
 
 fun homeTask(
     activity: Activity,
@@ -23,7 +22,6 @@ fun homeTask(
             stations.addAll(stationsByLocation)
             activity.runOnUiThread {
                 adapter.notifyDataSetChanged()
-                Logger.i("通知Ui线程刷新列表")
             }
         }
     }.start()
