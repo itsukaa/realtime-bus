@@ -1,12 +1,12 @@
-package com.itsukaa.realtime_bus.ui.profile
+package com.itsukaa.realtime_bus.ui.home
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.itsukaa.realtime_bus.R
 
-class GeneralSettingsActivity : AppCompatActivity() {
+class LineInfoActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_general_settings)
+        setContentView(R.layout.activity_bus_info)
     }
 }

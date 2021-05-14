@@ -26,88 +26,96 @@
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
 
-            android:layout_toStartOf="@+id/home_top_view_textView_more"
+            android:layout_toStartOf="@+id/toNavi"
             android:layout_toEndOf="@+id/home_top_view_textView_city" />
 
         <TextView
-            android:id="@+id/home_top_view_textView_more"
+            android:id="@+id/toNavi"
             android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toStartOf="@+id/daojishi"
+            android:text="导航"
+            android:padding="15dp" />
+
+        <TextView
+            android:id="@+id/daojishi"
+            android:layout_width="60dp"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:padding="15dp" />
     </RelativeLayout>
 
-    <RelativeLayout
-        android:id="@+id/home_top_view_layout_multiFunctions"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/home_top_view_layout_titleBar">
+    <!--    <RelativeLayout-->
+    <!--        android:id="@+id/home_top_view_layout_multiFunctions"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_below="@id/home_top_view_layout_titleBar">-->
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+    <!--        <LinearLayout-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="wrap_content">-->
 
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1">
+    <!--            <LinearLayout-->
+    <!--                android:layout_width="0dp"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:layout_weight="1">-->
 
-                <TextView
+    <!--                <TextView-->
 
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center_horizontal"
-                    android:drawablePadding="5dp"
-                    android:gravity="center_horizontal"
-                    android:text="公交线路"
-                    app:drawableTopCompat="@drawable/view_home_top_bus" />
-            </LinearLayout>
+    <!--                    android:layout_width="match_parent"-->
+    <!--                    android:layout_height="match_parent"-->
+    <!--                    android:layout_gravity="center_horizontal"-->
+    <!--                    android:drawablePadding="5dp"-->
+    <!--                    android:gravity="center_horizontal"-->
+    <!--                    android:text="公交线路"-->
+    <!--                    app:drawableTopCompat="@drawable/view_home_top_bus" />-->
+    <!--            </LinearLayout>-->
 
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1">
+    <!--            <LinearLayout-->
+    <!--                android:layout_width="0dp"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:layout_weight="1">-->
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center_horizontal"
-                    android:drawablePadding="5dp"
-                    android:gravity="center_horizontal"
-                    android:text="地铁线路"
-                    app:drawableTopCompat="@drawable/view_home_top_subway" />
-            </LinearLayout>
+    <!--                <TextView-->
+    <!--                    android:layout_width="match_parent"-->
+    <!--                    android:layout_height="match_parent"-->
+    <!--                    android:layout_gravity="center_horizontal"-->
+    <!--                    android:drawablePadding="5dp"-->
+    <!--                    android:gravity="center_horizontal"-->
+    <!--                    android:text="地铁线路"-->
+    <!--                    app:drawableTopCompat="@drawable/view_home_top_subway" />-->
+    <!--            </LinearLayout>-->
 
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1">
+    <!--            <LinearLayout-->
+    <!--                android:layout_width="0dp"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:layout_weight="1">-->
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center_horizontal"
-                    android:drawablePadding="5dp"
-                    android:gravity="center_horizontal"
-                    android:text="站点地图"
-                    app:drawableTopCompat="@drawable/view_home_top_station" />
-            </LinearLayout>
+    <!--                <TextView-->
+    <!--                    android:layout_width="match_parent"-->
+    <!--                    android:layout_height="match_parent"-->
+    <!--                    android:layout_gravity="center_horizontal"-->
+    <!--                    android:drawablePadding="5dp"-->
+    <!--                    android:gravity="center_horizontal"-->
+    <!--                    android:text="站点地图"-->
+    <!--                    app:drawableTopCompat="@drawable/view_home_top_station" />-->
+    <!--            </LinearLayout>-->
 
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1">
+    <!--            <LinearLayout-->
+    <!--                android:layout_width="0dp"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:layout_weight="1">-->
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center_horizontal"
-                    android:drawablePadding="5dp"
-                    android:gravity="center_horizontal"
-                    android:text="更多功能"
-                    app:drawableTopCompat="@drawable/view_home_top_more" />
-            </LinearLayout>
-        </LinearLayout>
-    </RelativeLayout>
+    <!--                <TextView-->
+    <!--                    android:layout_width="match_parent"-->
+    <!--                    android:layout_height="match_parent"-->
+    <!--                    android:layout_gravity="center_horizontal"-->
+    <!--                    android:drawablePadding="5dp"-->
+    <!--                    android:gravity="center_horizontal"-->
+    <!--                    android:text="更多功能"-->
+    <!--                    app:drawableTopCompat="@drawable/view_home_top_more" />-->
+    <!--            </LinearLayout>-->
+    <!--        </LinearLayout>-->
+    <!--    </RelativeLayout>-->
 
 </RelativeLayout>

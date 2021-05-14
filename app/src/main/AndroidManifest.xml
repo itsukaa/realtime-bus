@@ -25,7 +25,7 @@
         <activity android:name=".ui.profile.GeneralSettingsActivity" />
         <activity android:name=".ui.navi.NaviDetailsMapActivity" />
         <activity android:name=".ui.navi.NaviDetailsActivity" />
-        <activity android:name=".ui.home.LineDetailsMapActivity" />
+        <activity android:name=".ui.home.LineInfoActivity" />
         <activity android:name=".ui.home.LineDetailsActivity" />
         <activity android:name=".ui.home.LineSearcherActivity" />
         <activity android:name=".ui.navi.NaviActivity" />

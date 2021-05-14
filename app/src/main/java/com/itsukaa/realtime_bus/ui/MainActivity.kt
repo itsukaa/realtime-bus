@@ -1,17 +1,11 @@
 package com.itsukaa.realtime_bus.ui
 
 import android.Manifest
-import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
 import com.itsukaa.realtime_bus.R
 import com.itsukaa.realtime_bus.ui.home.HomeFragment
-import com.itsukaa.realtime_bus.ui.more.MoreFragment
-import com.itsukaa.realtime_bus.ui.navi.NaviActivity
-import com.itsukaa.realtime_bus.ui.profile.ProfileFragment
 import com.orhanobut.logger.Logger
-import nl.joery.animatedbottombar.AnimatedBottomBar
 import pub.devrel.easypermissions.EasyPermissions
 
 class MainActivity : AppCompatActivity(), EasyPermissions.PermissionCallbacks {
@@ -21,29 +15,10 @@ class MainActivity : AppCompatActivity(), EasyPermissions.PermissionCallbacks {
         checkPerms()
         setContentView(R.layout.activity_main)
 
-        val bottomBar = findViewById<AnimatedBottomBar>(R.id.bottom_bar)
-        bottomBar.onTabSelected = {
-            var fragment = Fragment()
-            when (it.title) {
-                "首页" -> {
-                    fragment = HomeFragment()
-                }
-                "导航" -> {
-                    startActivity(Intent(this, NaviActivity::class.java))
-                }
-                "更多" -> {
-                    fragment = MoreFragment()
-                }
-                "我的" -> {
-                    fragment = ProfileFragment()
-                }
-            }
-            val transaction = supportFragmentManager.beginTransaction()
-            transaction.commit()
-            transaction.replace(R.id.main_fragment_view, fragment)
-        }
-        bottomBar.selectTabAt(3)
-        bottomBar.selectTabAt(0)
+        var fragment = HomeFragment()
+        val transaction1 = supportFragmentManager.beginTransaction()
+        transaction1.commit()
+        transaction1.replace(R.id.main_fragment_view, fragment)
     }
 
     override fun onRequestPermissionsResult(

@@ -60,4 +60,25 @@ class SingleLine {
     }
 
 
+    fun getFirstBusCountAndTime(stationId: String): String {
+
+        return getNumAndCount(stationId)
+    }
+
+    fun getSecondBusCountAndTime(stationId: String): String {
+        val stopNum = stopNum(stationId)
+        if (stopNum == 0) {
+            if (singleLineBuses?.get(stopNum)?.busIsArrived == true) {
+                return "已到站"
+            }
+            return "即将到站"
+        }
+
+        return "${stopNum}站/${leftTime(stationId)}"
+    }
+
+    fun getBusesInfo(): List<Bus>? {
+        return singleLineBuses
+    }
+
 }

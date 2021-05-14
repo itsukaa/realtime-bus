@@ -11,6 +11,7 @@ import android.widget.TextView
 import com.itsukaa.realtime_bus.R
 import com.itsukaa.realtime_bus.ui.home.CityPickerActivity
 import com.itsukaa.realtime_bus.ui.home.LineSearcherActivity
+import com.itsukaa.realtime_bus.ui.navi.NaviActivity
 import com.orhanobut.logger.Logger
 
 /**
@@ -21,15 +22,18 @@ class HomeTopView(context: Context, attrs: AttributeSet) : FrameLayout(context, 
 
     var cityTextView: TextView
     var moreTextView: TextView
+    var toNaviTextView: TextView
     var searchView: SearchView
 
     init {
         LayoutInflater.from(context).inflate(R.layout.view_home_top, this)
         cityTextView = findViewById(R.id.home_top_view_textView_city)
-        moreTextView = findViewById(R.id.home_top_view_textView_more)
+        moreTextView = findViewById(R.id.daojishi)
+        toNaviTextView = findViewById(R.id.toNavi)
         searchView = findViewById(R.id.home_top_view_searchView)
 
         cityTextView.setOnClickListener(this)
+        toNaviTextView.setOnClickListener(this)
         searchView.setOnClickListener(this)
         moreTextView.setOnClickListener(this)
 
@@ -49,8 +53,12 @@ class HomeTopView(context: Context, attrs: AttributeSet) : FrameLayout(context, 
                 Logger.w("城市被点击了！")
                 v.context.startActivity(Intent(v.context, CityPickerActivity::class.java))
             }
-            R.id.home_top_view_textView_more -> {
+            R.id.daojishi -> {
                 Logger.w("更多 被点击了！")
+            }
+            R.id.toNavi -> {
+                Logger.i("导航")
+                context.startActivity(Intent(context, NaviActivity::class.java))
             }
         }
     }

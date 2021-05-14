@@ -6,13 +6,18 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.amap.api.maps.MapView
+import com.amap.api.services.busline.BusLineQuery
+import com.amap.api.services.busline.BusLineQuery.SearchType
+import com.amap.api.services.busline.BusLineResult
+import com.amap.api.services.busline.BusLineSearch
 import com.google.gson.Gson
 import com.itsukaa.realtime_bus.R
 import com.itsukaa.realtime_bus.data.adapter.StopsAdapter
 import com.itsukaa.realtime_bus.data.entity.SingleLine
 import com.orhanobut.logger.Logger
 
-class LineDetailsActivity : AppCompatActivity() {
+
+class LineDetailsActivity : AppCompatActivity(), BusLineSearch.OnBusLineSearchListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_bus_details)
@@ -37,9 +42,13 @@ class LineDetailsActivity : AppCompatActivity() {
         mRecyclerView.adapter = StopsAdapter(singleLine, stationId.toString())
 
 
-//        val searchView = findViewById<SearchView>(R.id.navi_search_view)
-//        searchView.setOnClickListener {
-//        }
+        val busLineQuery = BusLineQuery("804", SearchType.BY_LINE_NAME, "武汉")
+        busLineQuery.pageSize = 10
+        busLineQuery.pageNumber = 0
+        val busLineSearch = BusLineSearch(this, busLineQuery)
+
+        busLineSearch.setOnBusLineSearchListener(this)
+        busLineSearch.searchBusLineAsyn()
     }
 
     override fun onDestroy() {
@@ -71,6 +80,12 @@ class LineDetailsActivity : AppCompatActivity() {
         val mapView = findViewById<MapView>(R.id.busDetailsMap)
         mapView.onSaveInstanceState(outState)
         Logger.i("地图状态已被保存")
+    }
+
+    override fun onBusLineSearched(res: BusLineResult?, code: Int) {
+        for (busLine in res!!.busLines) {
+//            if (busLine.terminalStation.equals())
+        }
     }
 
 }

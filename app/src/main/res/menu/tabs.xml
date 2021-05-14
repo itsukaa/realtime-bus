@@ -8,12 +8,12 @@
         android:id="@+id/tab_navi"
         android:icon="@drawable/bottom_bar_navi"
         android:title="@string/navi" />
-    <item
-        android:id="@+id/tab_more"
-        android:icon="@drawable/bottom_bar_more"
-        android:title="@string/more" />
-    <item
-        android:id="@+id/tab_profile"
-        android:icon="@drawable/bottom_bar_profile"
-        android:title="@string/profile" />
+    <!--    <item-->
+    <!--        android:id="@+id/tab_more"-->
+    <!--        android:icon="@drawable/bottom_bar_more"-->
+    <!--        android:title="@string/more" />-->
+    <!--    <item-->
+    <!--        android:id="@+id/tab_profile"-->
+    <!--        android:icon="@drawable/bottom_bar_profile"-->
+    <!--        android:title="@string/profile" />-->
 </menu>

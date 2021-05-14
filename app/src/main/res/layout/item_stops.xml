@@ -8,14 +8,14 @@
         android:layout_width="40dp"
         android:layout_height="20dp"
         android:layout_alignParentTop="true"
-        android:text="车" />
+        android:text="" />
 
     <TextView
         android:id="@+id/realLine"
         android:layout_width="40dp"
         android:layout_height="20dp"
         android:layout_below="@+id/busPic"
-        android:text="_____" />
+        android:text="-------" />
 
     <TextView
         android:id="@+id/stopName"
@@ -23,6 +23,7 @@
         android:layout_height="250dp"
         android:layout_below="@id/realLine"
         android:ems="1"
+        android:gravity="center_horizontal"
         android:text="水洞路余家头站" />
 
 </RelativeLayout>

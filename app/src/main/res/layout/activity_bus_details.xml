@@ -9,18 +9,59 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+        <TextView
+            android:id="@+id/secondBusLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/busMid"
+            android:layout_margin="15dp"
+            android:gravity="center"
+            android:text="第二辆车" />
+
+        <View
+            android:id="@+id/busMid"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_centerInParent="true" />
+
+        <TextView
+            android:id="@+id/firstBusLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/busMid"
+            android:layout_margin="15dp"
+            android:gravity="center"
+            android:text="第一辆车" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/firstBusLabel"
+            android:layout_alignEnd="@+id/busMid"
+            android:layout_margin="15dp"
+            android:gravity="center"
+            android:text="3站/5分钟" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/secondBusLabel"
+            android:layout_alignStart="@+id/busMid"
+            android:layout_margin="15dp"
+            android:gravity="center"
+            android:text="6站/12分钟" />
     </RelativeLayout>
 
     <RelativeLayout
         android:id="@+id/lineStations"
-        android:layout_height="wrap_content"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_above="@+id/busDetailsMapLayout">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/stopsView"
-            android:layout_height="wrap_content"
             android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:overScrollMode="never" />
     </RelativeLayout>

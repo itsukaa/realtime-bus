@@ -48,11 +48,11 @@ class HomeFragment : Fragment() {
 
     val countDownTimer = object : CountDownTimer(30 * 1000, 1000) {
         override fun onFinish() {
-            activity!!.findViewById<TextView>(R.id.home_top_view_textView_more).text = "0"
+            activity!!.findViewById<TextView>(R.id.daojishi).text = "0"
         }
 
         override fun onTick(millisUntilFinished: Long) {
-            activity!!.findViewById<TextView>(R.id.home_top_view_textView_more).text =
+            activity!!.findViewById<TextView>(R.id.daojishi).text =
                 "${millisUntilFinished / 1000}s"
         }
     }

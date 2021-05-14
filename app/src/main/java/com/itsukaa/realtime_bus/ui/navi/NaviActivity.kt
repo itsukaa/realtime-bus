@@ -55,5 +55,9 @@ class NaviActivity : AppCompatActivity() {
         Logger.i("地图状态已被保存")
     }
 
+    override fun onBackPressed() {
+        super.onBackPressed()
+        Logger.i("返回")
 
+    }
 }
