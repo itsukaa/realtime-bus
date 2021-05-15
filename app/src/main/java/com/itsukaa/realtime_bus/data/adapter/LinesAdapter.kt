@@ -3,6 +3,7 @@ package com.itsukaa.realtime_bus.data.adapter
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.view.View
+import android.view.View.GONE
 import android.view.ViewGroup
 import android.widget.RelativeLayout
 import android.widget.TextView
@@ -40,7 +41,7 @@ class LinesAdapter(
             val line = lines[position]
             val intent = Intent(context, LineDetailsActivity::class.java)
             intent.putExtra("singleLine", Gson().toJson(line.singleLine))
-            intent.putExtra("stationId", station.stationId)
+            intent.putExtra("station", Gson().toJson(station))
             context.startActivity(intent)
         }
         //相反方向
@@ -49,7 +50,7 @@ class LinesAdapter(
             val line = lines[position]
             val intent = Intent(context, LineDetailsActivity::class.java)
             intent.putExtra("singleLine", Gson().toJson(line.returnSingleLine))
-            intent.putExtra("stationId", station.stationId)
+            intent.putExtra("station", Gson().toJson(station))
             context.startActivity(intent)
         }
         //设置点击
@@ -81,7 +82,6 @@ class LinesAdapter(
         holder.lineDirection.text = "${singleLine?.singleLineEndStationName} 方向"
         holder.rLineDirection.text = "${returnSingleLine?.singleLineEndStationName} 方向"
         //获取来去线路距离该 station 最近的 bus
-        //FEATHERS: 变换数据闪烁
         val stopNum = singleLine?.stopNum(station.stationId.toString())
         val rStopNum = returnSingleLine?.stopNum(station.stationId.toString())
         if (stopNum == -1) {
@@ -96,6 +96,11 @@ class LinesAdapter(
             val numAndCount = returnSingleLine?.getNumAndCount(station.stationId.toString())
             holder.rLineStationCountTime.text = "$numAndCount"
         }
+        //剔除反方向Err
+        if (returnSingleLine == null) {
+            holder.rLineLayout.visibility = GONE
+        }
+
         //是否添加 “展开” “收起” 按钮
         if (!isOpen) {
             if (!hideLines.isEmpty() && position == 3) {

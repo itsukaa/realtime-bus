@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.itsukaa.realtime_bus">
     <!-- 允许程序打开网 络套接字 -->
     <uses-permission android:name="android.permission.INTERNET" /> <!-- 允许程序设置内置sd卡的写权限 -->
@@ -9,7 +10,17 @@
     <uses-permission android:name="android.permission.READ_PHONE_STATE" /> <!-- 允许程序访问CellID或WiFi热点来获取粗略的位置 -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
+    <!--用于获取wifi的获取权限，wifi信息会用来进行网络定位-->
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"></uses-permission>
+    <!--用于写入缓存数据到扩展存储卡-->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
+    <!--用于申请调用A-GPS模块-->
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS"></uses-permission>
+    <!--如果设置了target >= 28 如果需要启动后台定位则必须声明这个权限-->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <!--如果您的应用需要后台定位权限，且有可能运行在Android Q设备上,并且设置了target>28，必须增加这个权限声明-->
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
 
     <application
         android:name=".RealtimeBusApplication"
@@ -19,17 +30,12 @@
         android:usesCleartextTraffic="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Realtimebus">
-        <activity android:name=".ui.profile.NaviSettingsActivity" />
-        <activity android:name=".ui.profile.UserSettingsActivity" />
-        <activity android:name=".ui.profile.GeneralSettingsActivity" />
-        <activity android:name=".ui.navi.NaviDetailsMapActivity" />
-        <activity android:name=".ui.navi.NaviDetailsActivity" />
+        android:theme="@style/Theme.Realtimebus"
+        tools:targetApi="m">
         <activity android:name=".ui.home.LineInfoActivity" />
         <activity android:name=".ui.home.LineDetailsActivity" />
         <activity android:name=".ui.home.LineSearcherActivity" />
         <activity android:name=".ui.navi.NaviActivity" />
-        <activity android:name=".ui.profile.LoginActivity" />
         <activity
             android:name=".ui.home.CityPickerActivity"
             android:theme="@style/DefaultCityPickerTheme"
@@ -45,6 +51,8 @@
             </intent-filter>
         </activity>
 
+
+        <service android:name="com.amap.api.location.APSService" />
         <meta-data
             android:name="com.amap.api.v2.apikey"
             android:value="a6fe28e959949b67cf18c0a3862bccff" />

@@ -8,7 +8,7 @@ object NetClient {
     val host = "http://192.168.0.59:8080"
 
 
-    fun call(path: String, body: String): Call {
+    fun post(path: String, body: String?): Call {
         val requestBody = RequestBody.create(JSON, body)
         val client = OkHttpClient()
         val request: Request = Request.Builder()
@@ -18,4 +18,13 @@ object NetClient {
         return client.newCall(request)
     }
 
+
+    fun get(path: String): Call {
+        val client = OkHttpClient()
+        val request: Request = Request.Builder()
+            .url(host + path)
+            .get()
+            .build()
+        return client.newCall(request)
+    }
 }

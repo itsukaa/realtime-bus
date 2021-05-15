@@ -10,14 +10,10 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.amap.api.services.busline.BusLineQuery
-import com.amap.api.services.busline.BusLineSearch
-import com.amap.api.services.busline.BusStationQuery
-import com.amap.api.services.busline.BusStationSearch
-import com.amap.api.services.core.LatLonPoint
-import com.amap.api.services.core.PoiItem
-import com.amap.api.services.poisearch.PoiResult
-import com.amap.api.services.poisearch.PoiSearch
+import com.amap.api.location.AMapLocation
+import com.amap.api.location.AMapLocationClient
+import com.amap.api.location.AMapLocationClientOption
+import com.amap.api.location.AMapLocationListener
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.itsukaa.realtime_bus.R
 import com.itsukaa.realtime_bus.data.adapter.StationsAdapter
@@ -29,22 +25,20 @@ import com.scwang.smart.refresh.footer.ClassicsFooter
 import com.scwang.smart.refresh.header.ClassicsHeader
 import com.scwang.smart.refresh.layout.api.RefreshLayout
 import java.util.*
-import kotlin.collections.ArrayList
 
 
 @SuppressLint("SetTextI18n")
-/**
- * A simple [Fragment] subclass.
- * Use the [HomeFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-class HomeFragment : Fragment() {
+class HomeFragment : Fragment(), AMapLocationListener {
 
     var stations: MutableList<Station> = mutableListOf()
     lateinit var adapter: StationsAdapter
+    private var nowLocation: Location = Location("114.316107", "30.530555", "武汉")
+    var flag = false
 
     lateinit var floatingActionButton: FloatingActionButton
     lateinit var refreshLayout: RefreshLayout
+
+    lateinit var aMapLocationClient: AMapLocationClient
 
     val countDownTimer = object : CountDownTimer(30 * 1000, 1000) {
         override fun onFinish() {
@@ -78,6 +72,13 @@ class HomeFragment : Fragment() {
         refreshData()
         addEventListener()
         addTimerTask()
+        val aMapLocationClientOption = AMapLocationClientOption()
+        aMapLocationClientOption.interval = 1000
+        aMapLocationClient = AMapLocationClient(context!!.applicationContext)
+        aMapLocationClient.setLocationListener(this)
+        aMapLocationClient.setLocationOption(aMapLocationClientOption)
+        aMapLocationClient.startLocation()
+
         return view
     }
 
@@ -107,67 +108,20 @@ class HomeFragment : Fragment() {
     }
 
     private fun refreshData() {
-        homeTask(activity!!, adapter, stations, Location("114.316107", "30.530555", "武汉"))
-        countDownTimer.cancel()
-        countDownTimer.start()
+        if (nowLocation.latitude != "30.530555" && nowLocation.longitude != "114.316107") {
+            homeTask(activity!!, adapter, stations, nowLocation)
+            Logger.d(nowLocation)
+            countDownTimer.cancel()
+            countDownTimer.start()
+        }
     }
 
-
-    /**
-     * 获取公交信息
-     */
-    fun getgongjiaoinfo() {
-        //"150700"
-        val query = PoiSearch.Query("", "150700", "武汉")
-        query.pageSize = 10
-        query.pageNum = 0
-        query.cityLimit = true
-
-        val poiSearch = PoiSearch(context, query)
-        val busStations = ArrayList<String>()
-
-        poiSearch.setOnPoiSearchListener(object : PoiSearch.OnPoiSearchListener {
-            override fun onPoiSearched(result: PoiResult?, rCode: Int) {
-                for (poiItem in result!!.pois) {
-                    busStations.add(poiItem.title)
-                }
-                for (busStation in busStations) {
-                    val busStationQuery = BusStationQuery(busStation, "武汉")
-                    val busStationSearch = BusStationSearch(context, busStationQuery)
-                    busStationSearch.setOnBusStationSearchListener { busStationResult, _ ->
-                        for (item in busStationResult.busStations) {
-                            for (busLineItem in item.busLineItems) {
-                                val busLineQuery = BusLineQuery(
-                                    busLineItem.busLineId,
-                                    BusLineQuery.SearchType.BY_LINE_ID,
-                                    "武汉"
-                                )
-                                busLineQuery.pageSize = 10
-                                busLineQuery.pageNumber = 0
-
-                                Logger.w(busLineItem.busLineId)
-                                val busLineSearch = BusLineSearch(context, busLineQuery)
-                                busLineSearch.setOnBusLineSearchListener { busLineResult, _ ->
-                                    for (busLine in busLineResult.busLines) {
-                                        Logger.w(busLine.directionsCoordinates.toString())
-                                    }
-                                }
-                                busLineSearch.searchBusLineAsyn()
-                            }
-                        }
-                    }
-                    busStationSearch.searchBusStationAsyn()
-                }
-
-            }
-
-            override fun onPoiItemSearched(p0: PoiItem?, p1: Int) {
-                TODO("Not yet implemented")
-            }
-        })
-        poiSearch.searchPOIAsyn()
-        poiSearch.bound = PoiSearch.SearchBound(LatLonPoint(30.555537, 114.314724), 500)
-        Logger.w("发送请求")
+    override fun onLocationChanged(aMapLocation: AMapLocation?) {
+        nowLocation =
+            Location(aMapLocation!!.longitude.toString(), aMapLocation.latitude.toString(), "武汉")
+        if (!flag) {
+            refreshData()
+            flag = true
+        }
     }
-
 }

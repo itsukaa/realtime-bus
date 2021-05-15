@@ -9,6 +9,4 @@ class ResStationsDto {
     override fun toString(): String {
         return "ResStationsDto(msg='$msg')"
     }
-
-
 }

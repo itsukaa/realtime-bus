@@ -1,7 +1,9 @@
 package com.itsukaa.realtime_bus.ui
 
 import android.Manifest
+import android.os.Build
 import android.os.Bundle
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import com.itsukaa.realtime_bus.R
 import com.itsukaa.realtime_bus.ui.home.HomeFragment
@@ -40,6 +42,7 @@ class MainActivity : AppCompatActivity(), EasyPermissions.PermissionCallbacks {
         Logger.i(perms.toString())
     }
 
+    @RequiresApi(Build.VERSION_CODES.Q)
     private fun checkPerms() {
         val perms =
             arrayOf(
@@ -47,6 +50,11 @@ class MainActivity : AppCompatActivity(), EasyPermissions.PermissionCallbacks {
                 Manifest.permission.ACCESS_FINE_LOCATION,
                 Manifest.permission.READ_EXTERNAL_STORAGE,
                 Manifest.permission.READ_PHONE_STATE,
+                Manifest.permission.CHANGE_WIFI_STATE,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                Manifest.permission.ACCESS_LOCATION_EXTRA_COMMANDS,
+                Manifest.permission.FOREGROUND_SERVICE,
+                Manifest.permission.ACCESS_BACKGROUND_LOCATION,
             )
         if (EasyPermissions.hasPermissions(this, *perms)) {
             // Already have permission, do the thing
