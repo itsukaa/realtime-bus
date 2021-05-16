@@ -1,8 +1,8 @@
 package com.itsukaa.realtime_bus.data.entity
 
 class Location(
-    val longitude: String,
-    val latitude: String,
+    var longitude: String,
+    var latitude: String,
     val cityName: String
 
 ) {

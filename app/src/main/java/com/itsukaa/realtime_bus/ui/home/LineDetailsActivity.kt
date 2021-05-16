@@ -65,6 +65,7 @@ class LineDetailsActivity : AppCompatActivity(),
         stationId = station.stationId.toString()
         terminalStation = singleLine.singleLineEndStationName.toString()
 
+        Logger.d(singleLine)
         paintStations()
         paintLine()
         paintBuses()

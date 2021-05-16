@@ -14,7 +14,7 @@ class Station {
     /**
      * 站台名称
      */
-    val stationName: String? = null
+    var stationName: String? = null
 
     /**
      * 站台线路

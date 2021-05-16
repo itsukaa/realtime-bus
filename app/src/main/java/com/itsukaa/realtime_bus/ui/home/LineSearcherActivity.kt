@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.itsukaa.realtime_bus.R
 import com.itsukaa.realtime_bus.data.adapter.SingleLinesAdapter
 import com.itsukaa.realtime_bus.data.entity.SingleLine
-import com.itsukaa.realtime_bus.data.entity.Station
 import com.itsukaa.realtime_bus.server.data.getSingleLinesByName
 import com.orhanobut.logger.Logger
 
@@ -27,7 +26,7 @@ class LineSearcherActivity : AppCompatActivity() {
         recyclerView = findViewById(R.id.recycleView)
         recyclerView.layoutManager = LinearLayoutManager(this)
         var singleLines = mutableListOf<SingleLine>()
-        recyclerView.adapter = SingleLinesAdapter(singleLines, Station())
+        recyclerView.adapter = SingleLinesAdapter(singleLines)
 
         // 设置搜索文本监听
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
@@ -44,8 +43,7 @@ class LineSearcherActivity : AppCompatActivity() {
                     singleLines = getSingleLinesByName(newText)
                     runOnUiThread {
                         recyclerView.adapter = SingleLinesAdapter(
-                            singleLines,
-                            Station()
+                            singleLines
                         )
                     }
                 }.start()
