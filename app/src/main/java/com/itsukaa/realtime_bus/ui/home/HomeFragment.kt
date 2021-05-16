@@ -1,6 +1,7 @@
 package com.itsukaa.realtime_bus.ui.home
 
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.view.LayoutInflater
@@ -35,18 +36,19 @@ class HomeFragment : Fragment(), AMapLocationListener {
     private var nowLocation: Location = Location("114.316107", "30.530555", "武汉")
     var flag = false
 
+    lateinit var myActivity: Activity
     lateinit var floatingActionButton: FloatingActionButton
     lateinit var refreshLayout: RefreshLayout
-
+    lateinit var daojishiView: TextView
     lateinit var aMapLocationClient: AMapLocationClient
 
     val countDownTimer = object : CountDownTimer(30 * 1000, 1000) {
         override fun onFinish() {
-            activity!!.findViewById<TextView>(R.id.daojishi).text = "0"
+            daojishiView.text = "0"
         }
 
         override fun onTick(millisUntilFinished: Long) {
-            activity!!.findViewById<TextView>(R.id.daojishi).text =
+            daojishiView.text =
                 "${millisUntilFinished / 1000}s"
         }
     }
@@ -64,11 +66,12 @@ class HomeFragment : Fragment(), AMapLocationListener {
         refreshLayout.setRefreshHeader(ClassicsHeader(context))
         refreshLayout.setRefreshFooter(ClassicsFooter(context))
 
-
+        daojishiView = view.findViewById(R.id.daojishi)
         mRecyclerView.layoutManager = LinearLayoutManager(activity)
         mRecyclerView.adapter = StationsAdapter(stations)
         adapter = mRecyclerView.adapter as StationsAdapter
         countDownTimer.start()
+        myActivity = activity!!
         refreshData()
         addEventListener()
         addTimerTask()
@@ -109,7 +112,7 @@ class HomeFragment : Fragment(), AMapLocationListener {
 
     private fun refreshData() {
         if (nowLocation.latitude != "30.530555" && nowLocation.longitude != "114.316107") {
-            homeTask(activity!!, adapter, stations, nowLocation)
+            homeTask(myActivity, adapter, stations, nowLocation)
             Logger.d(nowLocation)
             countDownTimer.cancel()
             countDownTimer.start()

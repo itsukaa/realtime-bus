@@ -1,14 +1,13 @@
 package com.itsukaa.realtime_bus.server.data
 
 import com.google.gson.Gson
-import com.itsukaa.realtime_bus.data.entity.Bus
-import com.itsukaa.realtime_bus.data.entity.Line
-import com.itsukaa.realtime_bus.data.entity.Location
-import com.itsukaa.realtime_bus.data.entity.Station
+import com.google.gson.reflect.TypeToken
+import com.itsukaa.realtime_bus.data.entity.*
 import com.itsukaa.realtime_bus.data.entity.dto.ResBusesDto
 import com.itsukaa.realtime_bus.data.entity.dto.ResStationsDto
 import com.itsukaa.realtime_bus.server.net.NetClient
 import com.orhanobut.logger.Logger
+
 
 fun getStationsByLocation(location: Location): List<Station> {
     return try {
@@ -32,9 +31,31 @@ fun getLinesByStationId(stationId: String): List<Line> {
 
 
 fun getBusesByLineId(lineId: String): List<Bus> {
-    val path = "/buses/$lineId"
+    return try {
+        val path = "/buses/$lineId"
+        val res = NetClient.get(path).execute().body().string()
+        val gson = Gson()
+        val fromJson = gson.fromJson(res, ResBusesDto::class.java)
+        return fromJson.res as List<Bus>
+    } catch (exception: Exception) {
+        Logger.e("数据出错")
+        emptyList()
+    }
+}
+
+
+fun getSingleLinesByName(name: String): MutableList<SingleLine> {
+    Logger.d(name)
+    val path = "/singleLines/$name"
     val res = NetClient.get(path).execute().body().string()
     val gson = Gson()
-    val fromJson = gson.fromJson(res, ResBusesDto::class.java)
-    return fromJson.res as List<Bus>
+    return try {
+        val fromJson: MutableList<SingleLine> =
+            gson.fromJson(res, object : TypeToken<ArrayList<SingleLine>>() {}.type)
+        Logger.d(fromJson)
+        fromJson
+    } catch (exception: Exception) {
+        Logger.e("数据出错")
+        mutableListOf()
+    }
 }

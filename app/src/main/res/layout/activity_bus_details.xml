@@ -6,15 +6,77 @@
     tools:context=".ui.home.LineDetailsActivity">
 
     <RelativeLayout
+        android:id="@+id/info"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true">
+
+        <RelativeLayout
+            android:id="@+id/lineName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true">
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:gravity="center"
+                android:text="804路" />
+
+            <TextView
+                android:id="@+id/direction"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/title"
+                android:gravity="center"
+                android:text="开往 xxx 方向" />
+
+            <TextView
+                android:id="@+id/yunyingTime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/direction"
+                android:layout_alignEnd="@+id/mid"
+                android:gravity="center"
+                android:text="06:00~21:00" />
+
+            <View
+                android:id="@+id/mid"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_centerInParent="true" />
+
+            <TextView
+                android:id="@+id/price"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/direction"
+                android:layout_alignStart="@+id/mid"
+                android:gravity="center"
+                android:text="2元" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/lineTime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/timeL"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/info">
 
         <TextView
             android:id="@+id/secondBusLabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignStart="@+id/busMid"
-            android:layout_margin="15dp"
             android:gravity="center"
             android:text="第二辆车" />
 
@@ -29,7 +91,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignEnd="@+id/busMid"
-            android:layout_margin="15dp"
             android:gravity="center"
             android:text="第一辆车" />
 
@@ -38,7 +99,6 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/firstBusLabel"
             android:layout_alignEnd="@+id/busMid"
-            android:layout_margin="15dp"
             android:gravity="center"
             android:text="3站/5分钟" />
 
@@ -47,7 +107,6 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/secondBusLabel"
             android:layout_alignStart="@+id/busMid"
-            android:layout_margin="15dp"
             android:gravity="center"
             android:text="6站/12分钟" />
     </RelativeLayout>
@@ -56,7 +115,7 @@
         android:id="@+id/lineStations"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/busDetailsMapLayout">
+        android:layout_below="@+id/timeL">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/stopsView"
@@ -69,7 +128,8 @@
     <RelativeLayout
         android:id="@+id/busDetailsMapLayout"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/lineStations"
         android:layout_alignParentBottom="true">
 
         <com.amap.api.maps.MapView

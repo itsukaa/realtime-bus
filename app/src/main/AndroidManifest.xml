@@ -32,7 +32,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Realtimebus"
         tools:targetApi="m">
-        <activity android:name=".ui.home.LineInfoActivity" />
         <activity android:name=".ui.home.LineDetailsActivity" />
         <activity android:name=".ui.home.LineSearcherActivity" />
         <activity android:name=".ui.navi.NaviActivity" />

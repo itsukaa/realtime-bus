@@ -45,14 +45,14 @@ class StationsAdapter(
         val stationLines = station.stationLines
 
         //如果这条线路 来去 都没有bus，则将该线路删除
-        stationLines!!.removeIf {
-            it.singleLine!!.singleLineBuses!!.isEmpty()
-                    && it.returnSingleLine!!.singleLineBuses!!.isEmpty()
-        }
+//        stationLines!!.removeIf {
+//            (it.singleLine!!.singleLineBuses.isNullOrEmpty()
+//                    && it.returnSingleLine!!.singleLineBuses.isNullOrEmpty())
+//        }
 
         //渲染界面。
         holder.stopNameTextView.text = "${station.stationName}"
-        holder.stopNumTextView.text = "${stationLines.size} 条有车线路"
+        holder.stopNumTextView.text = "${stationLines!!.size} 条有车线路"
         if (stationLines.size == 0) {
             holder.stopNumTextView.text = "所有线路均无车"
         }

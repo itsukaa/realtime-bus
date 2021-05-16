@@ -180,17 +180,19 @@ class LineDetailsActivity : AppCompatActivity(),
         val busImg = bitmapDescriptorFromVector(this, R.drawable.small_bus)
         Thread {
             val buses = singleLine.singleLineId?.let { getBusesByLineId(it) }!!
-            for (bus in buses) {
-                val markerOptions = MarkerOptions().position(
-                    LatLng(
-                        bus.location!!.latitude.toDouble(),
-                        bus.location.longitude.toDouble()
-                    )
-                ).icon(busImg)
-                    .visible(true)
-                    .alpha(1f)
-                val marker = aMap.addMarker(markerOptions)
-                busMarkerList.add(marker)
+            if (buses.isNotEmpty()) {
+                for (bus in buses) {
+                    val markerOptions = MarkerOptions().position(
+                        LatLng(
+                            bus.location!!.latitude.toDouble(),
+                            bus.location.longitude.toDouble()
+                        )
+                    ).icon(busImg)
+                        .visible(true)
+                        .alpha(1f)
+                    val marker = aMap.addMarker(markerOptions)
+                    busMarkerList.add(marker)
+                }
             }
         }.start()
     }
